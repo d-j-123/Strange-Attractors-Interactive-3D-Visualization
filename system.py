@@ -28,7 +28,7 @@ class DynamicSystem:
 
         elif self.system == 'thomas':
             #Initial value of parameter
-            b = 0.3
+            b = 0.1998
 
             parameters = {"b": {"value": b, "range": (0.0, 1.0)}}
 
@@ -60,7 +60,7 @@ class DynamicSystem:
         return parameters
 
     def get_initial_conditions(self):
-        x0, y0, z0 = 1, 1, 1
+        x0, y0, z0 = 1, 0, 1
 
         initial_conditions = {"x0": {"value": x0, "range": (-10.0, 10.0)}, "y0": {"value": y0, "range": (-10.0, 10.0)}, "z0": {"value": z0, "range": (-10.0, 10.0)}}
 
@@ -124,7 +124,7 @@ class DynamicSystem:
 
     def solve_system(self):
         initial_conditions = np.array([param["value"] for param in self.initial_conditions.values()])
-        values, time = RK4(f=self.equations, f_init=initial_conditions, t0=0, t_end=50, h=0.001)
+        values, time = RK4(f=self.equations, f_init=initial_conditions, t0=0, t_end=1000, h=0.01)
 
         return values, time
 

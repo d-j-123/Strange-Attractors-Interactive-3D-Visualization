@@ -1,6 +1,6 @@
 from system import DynamicSystem
 
-system = 'lorentz'
+system = 'thomas'
 
 ds = DynamicSystem(system)
 
